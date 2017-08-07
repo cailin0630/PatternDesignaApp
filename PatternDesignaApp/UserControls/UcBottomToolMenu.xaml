@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="PatternDesignaApp.UserControls.UcBottomToolMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PatternDesignaApp.UserControls"
+             mc:Ignorable="d" 
+             >
+    <Border BorderThickness="1"
+            BorderBrush="Brown">
+    <StackPanel Orientation="Horizontal"
+                HorizontalAlignment="Center">
+        <TextBlock Text="宽:"></TextBlock>
+        <TextBlock Text="400px"></TextBlock>
+        <TextBlock Text="高:"></TextBlock>
+        <TextBlock Text="600px"></TextBlock>
+    </StackPanel>
+    </Border>
+</UserControl>

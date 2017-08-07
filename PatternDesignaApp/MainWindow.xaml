@@ -1,0 +1,33 @@
+﻿<Window x:Class="PatternDesignaApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PatternDesignaApp"
+        xmlns:uc="clr-namespace:PatternDesignaApp.UserControls"
+        xmlns:toolkit ="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="768"
+        Width="1024">
+    <StackPanel>
+
+            <uc:UCMenu ></uc:UCMenu>
+            <uc:UcTopToolMenu ></uc:UcTopToolMenu>
+
+        <StackPanel Orientation="Horizontal">
+            <uc:UcLeftToolMenu ></uc:UcLeftToolMenu>
+            <Canvas MinHeight="400"
+                    MinWidth="850"
+                    ></Canvas>
+            <toolkit:ColorPicker SelectedColor="{Binding BackColor}"
+                                 IsOpen="True"
+                                 Width="100"
+                                 Height="50"
+                                 VerticalAlignment="Top"
+                                 HorizontalAlignment="Right">
+            </toolkit:ColorPicker>
+        </StackPanel>
+        <uc:UcBottomToolMenu ></uc:UcBottomToolMenu>
+    </StackPanel>
+</Window>
