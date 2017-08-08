@@ -7,27 +7,41 @@
         xmlns:uc="clr-namespace:PatternDesignaApp.UserControls"
         xmlns:toolkit ="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
-        Title="MainWindow"
-        Height="768"
-        Width="1024">
-    <StackPanel>
+        Title="PatternDesignaApp"
+        DataContext="{Binding Source={StaticResource Locator},Path=Main}">
+    <Grid Background="#3c3c3c">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <uc:UCMenu Grid.Row="0"
+                       ></uc:UCMenu>
+        <uc:UcTopToolMenu Grid.Row="1" ></uc:UcTopToolMenu>
 
-            <uc:UCMenu ></uc:UCMenu>
-            <uc:UcTopToolMenu ></uc:UcTopToolMenu>
-
-        <StackPanel Orientation="Horizontal">
-            <uc:UcLeftToolMenu ></uc:UcLeftToolMenu>
-            <Canvas MinHeight="400"
-                    MinWidth="850"
-                    ></Canvas>
-            <toolkit:ColorPicker SelectedColor="{Binding BackColor}"
+        <Grid  Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <uc:UcLeftToolMenu Grid.Column="0" ></uc:UcLeftToolMenu>
+            <ScrollViewer Grid.Column="1"
+                          HorizontalScrollBarVisibility="Hidden"
+                          VerticalScrollBarVisibility="Hidden">
+                <Image Source="{Binding CurrentImageSource}"
+                       Stretch="None">
+                </Image>
+            </ScrollViewer>
+            <toolkit:ColorPicker Grid.Column="2"
+                                 SelectedColor="{Binding BackColor}"
                                  IsOpen="True"
-                                 Width="100"
                                  Height="50"
-                                 VerticalAlignment="Top"
-                                 HorizontalAlignment="Right">
+                                 VerticalAlignment="Top">
             </toolkit:ColorPicker>
-        </StackPanel>
-        <uc:UcBottomToolMenu ></uc:UcBottomToolMenu>
-    </StackPanel>
+        </Grid>
+        <uc:UcBottomToolMenu Grid.Row="3"
+                             ></uc:UcBottomToolMenu>
+    </Grid>
 </Window>

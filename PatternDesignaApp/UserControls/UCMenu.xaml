@@ -11,22 +11,22 @@
         <MenuItem Header="文件">
             <MenuItem Header="新建" Command="{Binding NewFileCommand}">
                 <MenuItem.Icon>
-                    <Image Source="/PatternDesignaApp;component/Image/document.png" />
+                    <Image Source="/PatternDesignaApp;component/Image/UcMenu/newFile.png" />
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="打开" Command="{Binding OpenFileCommand}">
                 <MenuItem.Icon>
-                    <Image Source="/PatternDesignaApp;component/Image/folder.png" />
+                    <Image Source="/PatternDesignaApp;component/Image/UcMenu/openFile.png" />
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="保存" Command="{Binding SaveFileCommand}">
                 <MenuItem.Icon>
-                    <Image Source="/PatternDesignaApp;component/Image/save.png" />
+                    <Image Source="/PatternDesignaApp;component/Image/UcMenu/saveFile.png" />
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="另存为..." Command="{Binding SaveAsFileCommand}">
                 <MenuItem.Icon>
-                    <Image Source="/PatternDesignaApp;component/Image/save.png" />
+                    <Image Source="/PatternDesignaApp;component/Image/UcMenu/saveFile.png" />
                 </MenuItem.Icon>
             </MenuItem>
         </MenuItem>

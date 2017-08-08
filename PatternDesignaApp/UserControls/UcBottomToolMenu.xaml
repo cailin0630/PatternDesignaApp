@@ -11,9 +11,9 @@
     <StackPanel Orientation="Horizontal"
                 HorizontalAlignment="Center">
         <TextBlock Text="宽:"></TextBlock>
-        <TextBlock Text="400px"></TextBlock>
+            <TextBlock Text="{Binding CurrentImageSource.Width}"></TextBlock>
         <TextBlock Text="高:"></TextBlock>
-        <TextBlock Text="600px"></TextBlock>
+            <TextBlock Text="{Binding CurrentImageSource.Height}"></TextBlock>
     </StackPanel>
     </Border>
 </UserControl>
