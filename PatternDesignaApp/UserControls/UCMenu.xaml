@@ -10,7 +10,8 @@
         <converters:LanguageEnum2BoolConverter x:Key="Enum2BoolConverter"></converters:LanguageEnum2BoolConverter>
     </UserControl.Resources>
     <Menu Height="23">
-
+  
+        
         <MenuItem Header="{DynamicResource String_UcMenu_File}">
             <MenuItem Header="新建" Command="{Binding NewFileCommand}">
                 <MenuItem.Icon>
