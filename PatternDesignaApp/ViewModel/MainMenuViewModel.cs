@@ -6,11 +6,29 @@ using Microsoft.Win32;
 using PatternDesignaApp.Extension;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Windows;
+using PatternDesignaApp.Enums;
+using PatternDesignaApp.UserControls;
 
 namespace PatternDesignaApp.ViewModel
 {
     public partial class MainViewModel
     {
+        #region UcMenu Dp
+
+        private Language _currentLanguage;
+        public Language CurrentLanguage
+        {
+            get { return _currentLanguage; }
+            set
+            {
+                _currentLanguage = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region UcMenu Command
 
         private ICommand _newFileCommand;
@@ -57,6 +75,26 @@ namespace PatternDesignaApp.ViewModel
             }
         }
 
+        private ICommand _selectChineseLanguageCommand;
+
+        public ICommand SelectChineseLanguageCommand
+        {
+            get
+            {
+                _selectChineseLanguageCommand = _selectChineseLanguageCommand ?? new RelayCommand(DoSelectChineseLanguageCommand, () => true);
+                return _selectChineseLanguageCommand;
+            }
+        }
+        private ICommand _selectEnglishLanguageCommand;
+
+        public ICommand SelectEnglishLanguageCommand
+        {
+            get
+            {
+                _selectEnglishLanguageCommand = _selectEnglishLanguageCommand ?? new RelayCommand(DoSelectEnglishLanguageCommand, () => true);
+                return _selectEnglishLanguageCommand;
+            }
+        }
         #endregion UcMenu Command
 
         #region DoUcMenuCommand
@@ -102,6 +140,26 @@ namespace PatternDesignaApp.ViewModel
             //todo DoSaveAsFileCommand
         }
 
+
+        protected virtual void DoSelectChineseLanguageCommand()
+        {
+            var dict = new ResourceDictionary
+            {
+                Source = new Uri(@"Theme\Language\Chinese.xaml", UriKind.Relative)
+            };
+            Application.Current.Resources.MergedDictionaries[0] = dict;
+            CurrentLanguage=Language.Chinese;
+        }
+
+        protected virtual void DoSelectEnglishLanguageCommand()
+        {
+            var dict = new ResourceDictionary
+            {
+                Source = new Uri(@"Theme\Language\English.xaml", UriKind.Relative)
+            };
+            Application.Current.Resources.MergedDictionaries[0] = dict;
+            CurrentLanguage=Language.English;
+        }
         #endregion DoUcMenuCommand
     }
 }

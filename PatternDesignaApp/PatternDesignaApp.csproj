@@ -88,6 +88,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\Enum2BoolConverter.cs" />
+    <Compile Include="Enums\Language.cs" />
     <Compile Include="Extension\FrameworkConst.cs" />
     <Compile Include="Extension\ImageExtension.cs" />
     <Compile Include="UserControls\UcBottomToolMenu.xaml.cs">
@@ -96,8 +98,8 @@
     <Compile Include="UserControls\UcLeftToolMenu.xaml.cs">
       <DependentUpon>UcLeftToolMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCMenu.xaml.cs">
-      <DependentUpon>UCMenu.xaml</DependentUpon>
+    <Compile Include="UserControls\UcMenu.xaml.cs">
+      <DependentUpon>UcMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UcTopToolMenu.xaml.cs">
       <DependentUpon>UcTopToolMenu.xaml</DependentUpon>
@@ -120,6 +122,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Theme\Language\Chinese.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\Language\English.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\UcBottomToolMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,7 +138,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\UCMenu.xaml">
+    <Page Include="UserControls\UcMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

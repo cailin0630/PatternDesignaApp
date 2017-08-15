@@ -5,9 +5,9 @@ namespace PatternDesignaApp.UserControls
     /// <summary>
     /// Menu.xaml 的交互逻辑
     /// </summary>
-    public partial class UCMenu : UserControl
+    public partial class UcMenu : UserControl
     {
-        public UCMenu()
+        public UcMenu()
         {
             InitializeComponent();
         }

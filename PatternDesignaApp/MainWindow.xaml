@@ -16,8 +16,8 @@
             <RowDefinition Height="15*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <uc:UCMenu Grid.Row="0"
-                       ></uc:UCMenu>
+        <uc:UcMenu Grid.Row="0"
+                       ></uc:UcMenu>
         <uc:UcTopToolMenu Grid.Row="1" ></uc:UcTopToolMenu>
 
         <Grid  Grid.Row="2">
