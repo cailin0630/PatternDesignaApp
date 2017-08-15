@@ -9,5 +9,6 @@ namespace PatternDesignaApp.ViewModel
     public partial class MainViewModel
     {
         //todo UcLeftToolMenu action command
+
     }
 }
