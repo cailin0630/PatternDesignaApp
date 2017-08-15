@@ -10,6 +10,8 @@ namespace PatternDesignaApp.UserControls
         public UcMenu()
         {
             InitializeComponent();
+
+
         }
     }
 }
