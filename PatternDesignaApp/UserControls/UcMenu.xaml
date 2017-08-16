@@ -15,22 +15,22 @@
         <MenuItem Header="{DynamicResource String_UcMenu_File}">
             <MenuItem Header="新建" Command="{Binding NewFileCommand}">
                 <MenuItem.Icon>
-                    <Image Source="/PatternDesignaApp;component/Image/UcMenu/newFile.png" />
+                    <Image Source="{DynamicResource Icon_UcMenu_NewFile}" />
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="打开" Command="{Binding OpenFileCommand}">
                 <MenuItem.Icon>
-                    <Image Source="/PatternDesignaApp;component/Image/UcMenu/openFile.png" />
+                    <Image Source="{DynamicResource Icon_UcMenu_OpenFile}" />
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="保存" Command="{Binding SaveFileCommand}">
                 <MenuItem.Icon>
-                    <Image Source="/PatternDesignaApp;component/Image/UcMenu/saveFile.png" />
+                    <Image Source="{DynamicResource Icon_UcMenu_SaveFile}" />
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="另存为..." Command="{Binding SaveAsFileCommand}">
                 <MenuItem.Icon>
-                    <Image Source="/PatternDesignaApp;component/Image/UcMenu/saveFile.png" />
+                    <Image Source="{DynamicResource Icon_UcMenu_SaveFile}" />
                 </MenuItem.Icon>
             </MenuItem>
         </MenuItem>
@@ -50,10 +50,14 @@
         <MenuItem Header="{DynamicResource String_UcMenu_Help}">
              <MenuItem Header="语言选择">
                  <MenuItem Header="中文"
-                           Command="{Binding SelectChineseLanguageCommand}"
+                           Name="Chinese"
+                           Command="{Binding SelectLanguageCommand}"
+                           CommandParameter="{Binding ElementName=Chinese,Path=Name}"
                            IsChecked="{Binding CurrentLanguage,Converter={StaticResource Enum2BoolConverter},ConverterParameter=Chinese}"></MenuItem>
                  <MenuItem Header="英文"
-                           Command="{Binding SelectEnglishLanguageCommand}"
+                           Name="English"
+                           Command="{Binding SelectLanguageCommand}"
+                           CommandParameter="{Binding ElementName=English,Path=Name}"
                            IsChecked="{Binding CurrentLanguage,Converter={StaticResource Enum2BoolConverter},ConverterParameter=English}"></MenuItem>
             </MenuItem>
         </MenuItem>

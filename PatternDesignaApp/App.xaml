@@ -3,7 +3,8 @@
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:PatternDesignaApp.ViewModel" />
             <ResourceDictionary.MergedDictionaries>
-               <ResourceDictionary Source="/PatternDesignaApp;component/Theme/Language/Chinese.xaml" />
+               <ResourceDictionary Source="/PatternDesignaApp;component/Theme/Default/Language/Chinese.xaml" />
+                <ResourceDictionary Source="/PatternDesignaApp;component/Theme/Default/Icon.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

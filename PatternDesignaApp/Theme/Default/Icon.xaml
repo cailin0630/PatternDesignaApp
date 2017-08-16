@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <ImageSource x:Key="Icon_UcMenu_NewFile">/PatternDesignaApp;component/Image/UcMenu/newFile.png</ImageSource>
+    <ImageSource x:Key="Icon_UcMenu_OpenFile">/PatternDesignaApp;component/Image/UcMenu/openFile.png</ImageSource>
+    <ImageSource x:Key="Icon_UcMenu_SaveFile">/PatternDesignaApp;component/Image/UcMenu/saveFile.png</ImageSource>
+</ResourceDictionary>

@@ -1,14 +1,12 @@
-﻿using System;
-using GalaSoft.MvvmLight.CommandWpf;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
+﻿using GalaSoft.MvvmLight.CommandWpf;
 using Microsoft.Win32;
+using PatternDesignaApp.Enums;
 using PatternDesignaApp.Extension;
-using System.Drawing;
+using System;
 using System.Drawing.Imaging;
 using System.Windows;
-using PatternDesignaApp.Enums;
-using PatternDesignaApp.UserControls;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace PatternDesignaApp.ViewModel
 {
@@ -17,6 +15,7 @@ namespace PatternDesignaApp.ViewModel
         #region UcMenu Dp
 
         private Language _currentLanguage;
+
         public Language CurrentLanguage
         {
             get { return _currentLanguage; }
@@ -27,7 +26,7 @@ namespace PatternDesignaApp.ViewModel
             }
         }
 
-        #endregion
+        #endregion UcMenu Dp
 
         #region UcMenu Command
 
@@ -75,26 +74,17 @@ namespace PatternDesignaApp.ViewModel
             }
         }
 
-        private ICommand _selectChineseLanguageCommand;
+        private ICommand _selectLanguageCommand;
 
-        public ICommand SelectChineseLanguageCommand
+        public ICommand SelectLanguageCommand
         {
             get
             {
-                _selectChineseLanguageCommand = _selectChineseLanguageCommand ?? new RelayCommand(DoSelectChineseLanguageCommand, () => true);
-                return _selectChineseLanguageCommand;
+                _selectLanguageCommand = _selectLanguageCommand ?? new RelayCommand<object>(DoSelectLanguageCommand, o => true);
+                return _selectLanguageCommand;
             }
         }
-        private ICommand _selectEnglishLanguageCommand;
 
-        public ICommand SelectEnglishLanguageCommand
-        {
-            get
-            {
-                _selectEnglishLanguageCommand = _selectEnglishLanguageCommand ?? new RelayCommand(DoSelectEnglishLanguageCommand, () => true);
-                return _selectEnglishLanguageCommand;
-            }
-        }
         #endregion UcMenu Command
 
         #region DoUcMenuCommand
@@ -115,21 +105,21 @@ namespace PatternDesignaApp.ViewModel
             if (!openFileDialog.ShowDialog() ?? false)
                 return;
             var fileName = openFileDialog.FileName;
-            CurrentImageSource=new BitmapImage(new Uri(fileName));
+            CurrentImageSource = new BitmapImage(new Uri(fileName));
         }
 
         protected virtual void DoSaveFileCommand()
         {
             //todo DoSaveFileCommand
-            
-            if(CurrentImageSource==null)
+
+            if (CurrentImageSource == null)
                 return;
             var bitmap = (CurrentImageSource as BitmapImage).ConvertToBitmap();
-            var saveFileDialog=new SaveFileDialog
+            var saveFileDialog = new SaveFileDialog
             {
-               Filter = FrameworkConst.SupportedImageFilter,
+                Filter = FrameworkConst.SupportedImageFilter,
             };
-            if(!saveFileDialog.ShowDialog()??false)
+            if (!saveFileDialog.ShowDialog() ?? false)
                 return;
             var fileName = saveFileDialog.FileName;
             bitmap.Save(fileName, ImageFormat.Jpeg);
@@ -140,26 +130,17 @@ namespace PatternDesignaApp.ViewModel
             //todo DoSaveAsFileCommand
         }
 
-
-        protected virtual void DoSelectChineseLanguageCommand()
+        protected virtual void DoSelectLanguageCommand(object obj)
         {
-            var dict = new ResourceDictionary
+            var lang = obj.ToString();
+            Application.Current.Resources.MergedDictionaries[0] = new ResourceDictionary
             {
-                Source = new Uri(@"Theme\Language\Chinese.xaml", UriKind.Relative)
+                Source = new Uri($@"Theme\Default\Language\{lang}.xaml", UriKind.Relative)
             };
-            Application.Current.Resources.MergedDictionaries[0] = dict;
-            CurrentLanguage=Language.Chinese;
+            Enum.TryParse(lang, true, out Language newlang);
+            CurrentLanguage = newlang;
         }
 
-        protected virtual void DoSelectEnglishLanguageCommand()
-        {
-            var dict = new ResourceDictionary
-            {
-                Source = new Uri(@"Theme\Language\English.xaml", UriKind.Relative)
-            };
-            Application.Current.Resources.MergedDictionaries[0] = dict;
-            CurrentLanguage=Language.English;
-        }
         #endregion DoUcMenuCommand
     }
 }
