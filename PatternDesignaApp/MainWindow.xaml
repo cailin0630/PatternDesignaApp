@@ -59,9 +59,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <uc:UcLeftToolMenu Grid.Column="0" ></uc:UcLeftToolMenu>
-            <ScrollViewer Grid.Column="1"
-                          HorizontalScrollBarVisibility="Hidden"
-                          VerticalScrollBarVisibility="Hidden">
+            <ScrollViewer Grid.Column="1">
                 <ItemsControl ItemsSource="{Binding Points}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -76,8 +74,9 @@
                     </ItemsControl.ItemContainerStyle>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border BorderBrush="AliceBlue"
+                            <Border BorderBrush="#686868"
                                     BorderThickness="0.5" 
+                                    Opacity="0.5"
                                     Width="{Binding Width}"
                                     Height="{Binding Height}"
                                     />
