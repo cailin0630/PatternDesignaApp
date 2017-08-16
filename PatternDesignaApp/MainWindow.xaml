@@ -70,6 +70,7 @@
                         <Style>
                             <Setter Property="Canvas.Left" Value="{Binding X}"/>
                             <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                            <!--<Setter Property="Canvas.Margin" Value="{Binding Margin}"></Setter>-->
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                     <ItemsControl.ItemTemplate>

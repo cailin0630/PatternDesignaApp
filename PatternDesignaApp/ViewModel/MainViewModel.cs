@@ -1,8 +1,12 @@
 using GalaSoft.MvvmLight;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Media;
 
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
+using System;
+using System.Windows.Controls;
+using System.Drawing;
 
 namespace PatternDesignaApp.ViewModel
 {
@@ -43,6 +47,7 @@ namespace PatternDesignaApp.ViewModel
         /// <param name="high"></param>
         private void InitCanvas(int row, int column)
         {
+           
             var p = new List<Rectangle>();
             var total = row * column;
             for (int rowIndex = 0; rowIndex < row; rowIndex++)
@@ -51,16 +56,24 @@ namespace PatternDesignaApp.ViewModel
                 {
                     var r = new Rectangle
                     {
-                        X = 10 * rowIndex,
-                        Y = 10 * columnIndex,
+                        //Margin = new Thickness(columnIndex*10, rowIndex*10,0,0),
+                        X = rowIndex * 10,
+                        Y = columnIndex * 10,
                         Height = 10,
                         Width = 10,
                     };
-                   
+                    
                     p.Add(r);
                 }
             }
+            //EventManager.RegisterClassHandler(typeof(Rectangle), Mouse.MouseDownEvent,
+            //    new MouseButtonEventHandler(OnMouseDown), false);
             Points = p;
+        }
+
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("ok");
         }
     }
 }
