@@ -97,6 +97,7 @@
     <Compile Include="Extension\ImageExtension.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="Model\MyPixel.cs" />
+    <Compile Include="Model\Result.cs" />
     <Compile Include="UserControls\UcBottomToolMenu.xaml.cs">
       <DependentUpon>UcBottomToolMenu.xaml</DependentUpon>
     </Compile>

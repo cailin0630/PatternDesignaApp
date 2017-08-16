@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace PatternDesignaApp.Model
 {
-    public class MyPixel
+    public  class MyPixel 
     {
-
+        
     }
 }

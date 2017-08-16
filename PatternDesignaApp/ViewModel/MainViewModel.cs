@@ -1,40 +1,15 @@
-using System.Windows.Input;
-using System.Windows.Media;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
-using Xceed.Wpf.DataGrid.Views;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Media;
+
 
 namespace PatternDesignaApp.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public partial class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
-
-           
         }
 
         private ImageSource _currentImageSource;
@@ -48,6 +23,44 @@ namespace PatternDesignaApp.ViewModel
                 RaisePropertyChanged();
             }
         }
-      
+
+        private ICollection<Rectangle> _points;
+
+        public ICollection<Rectangle> Points
+        {
+            get { return _points; }
+            set
+            {
+                _points = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// ªÊ÷∆ª≠≤º
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="high"></param>
+        private void InitCanvas(int row, int column)
+        {
+            var p = new List<Rectangle>();
+            var total = row * column;
+            for (int rowIndex = 0; rowIndex < row; rowIndex++)
+            {
+                for (int columnIndex = 0; columnIndex < column; columnIndex++)
+                {
+                    var r = new Rectangle
+                    {
+                        X = 10 * rowIndex,
+                        Y = 10 * columnIndex,
+                        Height = 10,
+                        Width = 10,
+                    };
+                   
+                    p.Add(r);
+                }
+            }
+            Points = p;
+        }
     }
 }

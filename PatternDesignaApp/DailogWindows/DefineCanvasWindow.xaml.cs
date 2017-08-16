@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PatternDesignaApp.Extension;
+using PatternDesignaApp.Model;
 
 namespace PatternDesignaApp.DailogWindows
 {
@@ -25,16 +26,18 @@ namespace PatternDesignaApp.DailogWindows
             InitializeComponent();
             
         }
-        
+
+        private static Action<Tuple<int,int>> _callback;
         private static DefineCanvasWindow _defineCanvasWindow;
-        public new static Tuple<int,int> ShowDialog()
+        public static void ShowDialog(Action<Tuple<int, int>> callAction)
         {
             _defineCanvasWindow = new DefineCanvasWindow
             {
                 Owner = Application.Current.MainWindow
             };
-            ((Window) _defineCanvasWindow).ShowDialog();
-           return new Tuple<int, int>(0,0);
+            _callback = callAction;
+            _defineCanvasWindow.ShowDialog();
+           
         }
         private void ConfirmButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -43,6 +46,14 @@ namespace PatternDesignaApp.DailogWindows
                 TipTextBlock.Text = "参数不合法";
                 return;
             }
+            if (!int.TryParse(WidthTextBox.Text, out int width) || !int.TryParse(HighTextBox.Text, out int high))
+            {
+                TipTextBlock.Text = "参数不合法";
+                return;
+            }
+
+            _callback.Invoke(new Tuple<int, int>(width, high));
+            Close();
         }
     }
 }

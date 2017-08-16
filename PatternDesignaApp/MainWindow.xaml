@@ -62,25 +62,28 @@
             <ScrollViewer Grid.Column="1"
                           HorizontalScrollBarVisibility="Hidden"
                           VerticalScrollBarVisibility="Hidden">
-                <Border Style="{StaticResource MyGridBorderStyle}">
-                    <Canvas Height="300"
-                            Width="300">
-                        <!--<Polyline
-                            Points="10,110 60,10 110,110"
-                            Stroke="Black"
-                            StrokeThickness="4" />
-
-                        <Polyline
-                            Points="10,110 110,110 110,10"
-                            Stroke="Black"
-                            StrokeThickness="4"
-                            Canvas.Left="150" />-->
-
-                    </Canvas>
-                </Border>
-                    <!--<Image Source="{Binding CurrentImageSource}"
-                       Stretch="None">
-                </Image>-->
+                <ItemsControl ItemsSource="{Binding Points}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas  IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                            <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="AliceBlue"
+                                    BorderThickness="0.5" 
+                                    Width="{Binding Width}"
+                                    Height="{Binding Height}"
+                                    />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </ScrollViewer>
             <toolkit:ColorPicker Grid.Column="2"
                                  SelectedColor="{Binding BackColor}"

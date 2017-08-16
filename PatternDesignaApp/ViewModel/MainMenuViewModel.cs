@@ -93,7 +93,13 @@ namespace PatternDesignaApp.ViewModel
         protected virtual void DoNewFileCommand()
         {
             //todo DoNewFileCommand
-            DefineCanvasWindow.ShowDialog();
+            DefineCanvasWindow.ShowDialog(result =>
+            {
+                var width = result.Item1;
+                var high = result.Item2;
+                //todo 绘制 画布
+                InitCanvas(width, high);
+            });
         }
 
         protected virtual void DoOpenFileCommand()
