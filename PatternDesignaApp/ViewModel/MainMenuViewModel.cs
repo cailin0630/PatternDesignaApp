@@ -7,6 +7,7 @@ using System.Drawing.Imaging;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using PatternDesignaApp.DailogWindows;
 
 namespace PatternDesignaApp.ViewModel
 {
@@ -92,6 +93,7 @@ namespace PatternDesignaApp.ViewModel
         protected virtual void DoNewFileCommand()
         {
             //todo DoNewFileCommand
+            DefineCanvasWindow.ShowDialog();
         }
 
         protected virtual void DoOpenFileCommand()

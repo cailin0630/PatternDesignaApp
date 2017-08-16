@@ -9,6 +9,38 @@
         mc:Ignorable="d"
         Title="PatternDesignaApp"
         DataContext="{Binding Source={StaticResource Locator},Path=Main}">
+    <Window.Resources>
+        <DrawingBrush x:Key="MyGridBrushResource" 
+                      Viewport="0,0,10,10" 
+                      ViewportUnits="Absolute" 
+                      TileMode="Tile">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <GeometryDrawing Brush="White">
+                            <!-- 这里是格子填充颜色 -->
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,1,1" />
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Geometry="M0,0 L1,0 1,0.1, 0,0.1Z" Brush="#CCCCFF" />
+                        <!-- 这里是横线 -->
+                        <GeometryDrawing Geometry="M0,0 L0,1 0.1,1, 0.1,0Z" Brush="#CCCCFF" />
+                        <!-- 这里是竖线 -->
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+        <!-- 这里是外框线 -->
+        <Style x:Key="MyGridBorderStyle">
+            <Setter Property="Border.Background" Value="{StaticResource MyGridBrushResource}"/>
+            <Setter Property="Border.HorizontalAlignment" Value="Center"/>
+            <Setter Property="Border.VerticalAlignment" Value="Top"/>
+            <Setter Property="Border.BorderBrush" Value="Black"/>
+            <Setter Property="Border.BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
     <Grid Background="#3c3c3c">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -30,9 +62,25 @@
             <ScrollViewer Grid.Column="1"
                           HorizontalScrollBarVisibility="Hidden"
                           VerticalScrollBarVisibility="Hidden">
-                <Image Source="{Binding CurrentImageSource}"
+                <Border Style="{StaticResource MyGridBorderStyle}">
+                    <Canvas Height="300"
+                            Width="300">
+                        <!--<Polyline
+                            Points="10,110 60,10 110,110"
+                            Stroke="Black"
+                            StrokeThickness="4" />
+
+                        <Polyline
+                            Points="10,110 110,110 110,10"
+                            Stroke="Black"
+                            StrokeThickness="4"
+                            Canvas.Left="150" />-->
+
+                    </Canvas>
+                </Border>
+                    <!--<Image Source="{Binding CurrentImageSource}"
                        Stretch="None">
-                </Image>
+                </Image>-->
             </ScrollViewer>
             <toolkit:ColorPicker Grid.Column="2"
                                  SelectedColor="{Binding BackColor}"
