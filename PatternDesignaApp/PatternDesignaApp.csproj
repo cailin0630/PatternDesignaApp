@@ -88,6 +88,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\Enum2BoolConverter.cs" />
     <Compile Include="DailogWindows\DefineCanvasWindow.xaml.cs">
       <DependentUpon>DefineCanvasWindow.xaml</DependentUpon>
@@ -96,6 +97,9 @@
     <Compile Include="Extension\FrameworkConst.cs" />
     <Compile Include="Extension\ImageExtension.cs" />
     <Compile Include="Extension\StringExtension.cs" />
+    <Compile Include="UserControls\LoadingWait.xaml.cs">
+      <DependentUpon>LoadingWait.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\MyPixel.cs" />
     <Compile Include="Model\Result.cs" />
     <Compile Include="UserControls\UcBottomToolMenu.xaml.cs">
@@ -115,10 +119,15 @@
     <Compile Include="ViewModel\MainMenuViewModel.cs" />
     <Compile Include="ViewModel\MainTopToolMenuViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="DailogWindows\DefineCanvasWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LoadingWait.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

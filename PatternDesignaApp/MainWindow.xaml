@@ -6,10 +6,12 @@
         xmlns:local="clr-namespace:PatternDesignaApp"
         xmlns:uc="clr-namespace:PatternDesignaApp.UserControls"
         xmlns:toolkit ="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:converters="clr-namespace:PatternDesignaApp.Converters"
         mc:Ignorable="d"
         Title="PatternDesignaApp"
         DataContext="{Binding Source={StaticResource Locator},Path=Main}">
     <Window.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></converters:BooleanToVisibilityConverter>
         <DrawingBrush x:Key="MyGridBrushResource" 
                       Viewport="0,0,10,10" 
                       ViewportUnits="Absolute" 
@@ -41,58 +43,72 @@
             <Setter Property="Border.BorderThickness" Value="1"/>
         </Style>
     </Window.Resources>
-    <Grid Background="#3c3c3c">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="15*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <uc:UcMenu Grid.Row="0"
-                       ></uc:UcMenu>
-        <uc:UcTopToolMenu Grid.Row="1" ></uc:UcTopToolMenu>
+    <Grid>
+       
+        <Grid Background="#3c3c3c">
+          
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <uc:UcMenu Grid.Row="0"
+            ></uc:UcMenu>
+            <uc:UcTopToolMenu Grid.Row="1" ></uc:UcTopToolMenu>
 
-        <Grid  Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="10*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <uc:UcLeftToolMenu Grid.Column="0" ></uc:UcLeftToolMenu>
-            <ScrollViewer Grid.Column="1">
-                <ItemsControl ItemsSource="{Binding Points}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <Canvas  IsItemsHost="True"/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemContainerStyle>
-                        <Style>
-                            <Setter Property="Canvas.Left" Value="{Binding X}"/>
-                            <Setter Property="Canvas.Top" Value="{Binding Y}"/>
-                            <!--<Setter Property="Canvas.Margin" Value="{Binding Margin}"></Setter>-->
-                        </Style>
-                    </ItemsControl.ItemContainerStyle>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderBrush="#686868"
-                                    BorderThickness="0.5" 
-                                    Opacity="0.5"
-                                    Width="{Binding Width}"
-                                    Height="{Binding Height}"
-                                    />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </ScrollViewer>
-            <toolkit:ColorPicker Grid.Column="2"
-                                 SelectedColor="{Binding BackColor}"
-                                 IsOpen="True"
-                                 Height="50"
-                                 VerticalAlignment="Top">
-            </toolkit:ColorPicker>
+            <Grid  Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <uc:UcLeftToolMenu Grid.Column="0" ></uc:UcLeftToolMenu>
+                <ScrollViewer Grid.Column="1">
+                    <ItemsControl ItemsSource="{Binding Points}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Canvas  IsItemsHost="True"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemContainerStyle>
+                            <Style>
+                                <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                                <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                                <!--<Setter Property="Canvas.Margin" Value="{Binding Margin}"></Setter>-->
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#686868"
+                                        BorderThickness="0.5" 
+                                        Opacity="0.5"
+                                        Width="{Binding Width}"
+                                        Height="{Binding Height}"
+                                />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                <toolkit:ColorPicker Grid.Column="2"
+                                     SelectedColor="{Binding BackColor}"
+                                     IsOpen="True"
+                                     Height="50"
+                                     VerticalAlignment="Top">
+                </toolkit:ColorPicker>
+            </Grid>
+            <uc:UcBottomToolMenu Grid.Row="3"
+            ></uc:UcBottomToolMenu>
         </Grid>
-        <uc:UcBottomToolMenu Grid.Row="3"
-                             ></uc:UcBottomToolMenu>
+      
+        <!-- 等待框 -->
+        <Grid Visibility="{Binding ShowLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+          
+            <Border Background="Black" Opacity="0.4" />
+            <uc:LoadingWait></uc:LoadingWait>
+                      
+          
+        </Grid>
     </Grid>
+   
 </Window>
