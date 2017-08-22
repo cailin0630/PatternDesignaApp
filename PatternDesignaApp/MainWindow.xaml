@@ -64,18 +64,66 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <uc:UcLeftToolMenu Grid.Column="0" ></uc:UcLeftToolMenu>
-                <ScrollViewer Grid.Column="1">
+                <!--<Canvas Grid.Column="1"
+                        Name="Canvas" ></Canvas>-->
+                <ScrollViewer Grid.Column="1"
+                               >
                     <ItemsControl ItemsSource="{Binding Points}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <Canvas  IsItemsHost="True"/>
+                                <Canvas Name="Canvas"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                      >
+                                </Canvas>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button  Height="{Binding Height}"
+                                         Width="{Binding Width}"
+                                         Margin="{Binding Margin}">
+                                    
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <!--<ItemsControl  ItemsSource="{Binding Points}">
+                              
+                        <ItemsControl.ItemTemplate>
+                              <DataTemplate>
+                                          
+                                <Button Content="{Binding Content}"/>
+                                            
+                            </DataTemplate>
+                                  
+                        </ItemsControl.ItemTemplate>
+                              
+                     
+                              
+                        <ItemsControl.ItemsPanel>
+                                    
+                            <ItemsPanelTemplate>
+                                          
+                                <StackPanel></StackPanel>
+                                        
+                            </ItemsPanelTemplate>
+                                  
+                        </ItemsControl.ItemsPanel>
+                            
+                    </ItemsControl>
+                    <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Button />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemContainerStyle>
                             <Style>
-                                <Setter Property="Canvas.Left" Value="{Binding X}"/>
-                                <Setter Property="Canvas.Top" Value="{Binding Y}"/>
-                                <!--<Setter Property="Canvas.Margin" Value="{Binding Margin}"></Setter>-->
+                                <Setter Property="Canvas.Left" Value="{Binding Rect.X}"/>
+                                <Setter Property="Canvas.Top" Value="{Binding Rect.Y}"/>
+                                -->
+                    <!--<Setter Property="Canvas.Margin" Value="{Binding Margin}"></Setter>--><!--
                             </Style>
                         </ItemsControl.ItemContainerStyle>
                         <ItemsControl.ItemTemplate>
@@ -83,19 +131,29 @@
                                 <Border BorderBrush="#686868"
                                         BorderThickness="0.5" 
                                         Opacity="0.5"
-                                        Width="{Binding Width}"
-                                        Height="{Binding Height}"
-                                />
+                                        Width="{Binding Rect.Width}"
+                                        Height="{Binding Rect.Width}"
+                                >
+                                   <Button Name="Grid"
+                                           Click="Grid_OnClick"></Button>
+                                </Border>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                        </ItemsControl.ItemTemplate>-->
+                    
                 </ScrollViewer>
-                <toolkit:ColorPicker Grid.Column="2"
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="外框颜色"/>
+                    <toolkit:ColorPicker 
                                      SelectedColor="{Binding BackColor}"
-                                     IsOpen="True"
-                                     Height="50"
-                                     VerticalAlignment="Top">
-                </toolkit:ColorPicker>
+                                      >
+                    </toolkit:ColorPicker>
+                    <TextBlock Text="填充颜色"/>
+                    <toolkit:ColorPicker 
+                                     SelectedColor="{Binding FillColor}"
+                                      >
+                    </toolkit:ColorPicker>
+                </StackPanel>
+               
             </Grid>
             <uc:UcBottomToolMenu Grid.Row="3"
             ></uc:UcBottomToolMenu>
