@@ -8,6 +8,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
+using GalaSoft.MvvmLight.CommandWpf;
+using PatternDesignaApp.Model;
 
 
 namespace PatternDesignaApp.ViewModel
@@ -18,12 +20,7 @@ namespace PatternDesignaApp.ViewModel
         {
         }
 
-        public class MyPoint
-        {
-            public int Width { get; set; }
-            public int Height { get; set; }
-            public Thickness Margin { get; set; }
-        }
+        
 
 
         private ImageSource _currentImageSource;
@@ -38,9 +35,9 @@ namespace PatternDesignaApp.ViewModel
             }
         }
 
-        private ICollection<MyPoint> _points;
+        private ICollection<MyPixelModel> _points;
 
-        public ICollection<MyPoint> Points
+        public ICollection<MyPixelModel> Points
         {
             get { return _points; }
             set
@@ -134,7 +131,7 @@ namespace PatternDesignaApp.ViewModel
         {
             //DoCommand(() =>
             //{
-            var p = new List<MyPoint>();
+            var p = new List<MyPixelModel>();
             var total = row * column;
             //for (int i = 0; i < total; i++)
             //{
@@ -163,12 +160,15 @@ namespace PatternDesignaApp.ViewModel
                     //        Width = 20,
                     //    }
                     //};
-                    var button = new MyPoint
+                    var button = new MyPixelModel
                     {
                         Height = 20,
                         Width = 20,
                         Margin = new Thickness(columnIndex * 20, rowIndex * 20, 0, 0),
-                        
+                        ClickCommand = new RelayCommand<MyPixelModel>(o =>
+                        {
+                            o.Background = FillColor;
+                        },o=>true)
                     };
                     //Console.WriteLine(button.Margin);
 

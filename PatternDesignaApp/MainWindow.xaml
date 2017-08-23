@@ -80,9 +80,13 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button  Height="{Binding Height}"
+                                <Button  Name="Button"
+                                     Height="{Binding Height}"
                                          Width="{Binding Width}"
-                                         Margin="{Binding Margin}">
+                                         Margin="{Binding Margin}"
+                                         Background="{Binding Background}"
+                                         Command="{Binding ClickCommand}"
+                                         CommandParameter="{Binding}">
                                     
                                 </Button>
                             </DataTemplate>
