@@ -34,7 +34,7 @@
                  Width="100"
                  Height="30"
                  Margin="10,0,0,0"
-                 Text="100"
+                 Text="20"
                    ></TextBox>
         <TextBlock Grid.Row="1"
                    Grid.Column="0"
@@ -50,7 +50,7 @@
                  Width="100"
                  Height="30"
                  Margin="10,0,0,0"
-                 Text="100"
+                 Text="20"
                  ></TextBox>
         <TextBlock Name="TipTextBlock"
                    Grid.Row="2"

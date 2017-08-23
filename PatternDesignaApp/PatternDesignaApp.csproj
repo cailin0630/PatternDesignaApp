@@ -88,11 +88,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\MyEventCommand.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\Enum2BoolConverter.cs" />
     <Compile Include="DailogWindows\DefineCanvasWindow.xaml.cs">
       <DependentUpon>DefineCanvasWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Enums\BrushType.cs" />
     <Compile Include="Enums\Language.cs" />
     <Compile Include="Extension\FrameworkConst.cs" />
     <Compile Include="Extension\ImageExtension.cs" />
@@ -103,6 +105,7 @@
     </Compile>
     <Compile Include="Model\MyPixel.cs" />
     <Compile Include="Model\Result.cs" />
+    <Compile Include="UserControls\MyButton.cs" />
     <Compile Include="UserControls\UcBottomToolMenu.xaml.cs">
       <DependentUpon>UcBottomToolMenu.xaml</DependentUpon>
     </Compile>
@@ -212,8 +215,6 @@
     <Resource Include="Image\UcMenu\saveFile.png" />
     <Resource Include="Image\up.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Command\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

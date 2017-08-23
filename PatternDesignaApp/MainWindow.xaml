@@ -3,12 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PatternDesignaApp"
         xmlns:uc="clr-namespace:PatternDesignaApp.UserControls"
-        xmlns:toolkit ="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         xmlns:converters="clr-namespace:PatternDesignaApp.Converters"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        
         mc:Ignorable="d"
         Title="PatternDesignaApp"
+        Name="Main"
         DataContext="{Binding Source={StaticResource Locator},Path=Main}">
     <Window.Resources>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></converters:BooleanToVisibilityConverter>
@@ -73,22 +75,24 @@
                             <ItemsPanelTemplate>
                                 <Canvas Name="Canvas"
                                   ScrollViewer.HorizontalScrollBarVisibility="Visible" 
-                                  ScrollViewer.VerticalScrollBarVisibility="Visible"
-                                      >
+                                  ScrollViewer.VerticalScrollBarVisibility="Visible">
                                 </Canvas>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button  Name="Button"
+                                <uc:MyButton  Name="MyButton"
                                      Height="{Binding Height}"
                                          Width="{Binding Width}"
                                          Margin="{Binding Margin}"
-                                         Background="{Binding Background}"
-                                         Command="{Binding ClickCommand}"
-                                         CommandParameter="{Binding}">
-                                    
-                                </Button>
+                                         Background="{Binding Background,Mode=TwoWay}"
+                                        
+                                         MouseEnter="Button_OnMouseEnter"
+                                         MouseLeftButtonDown="Button_OnMouseLeftButtonDown"
+                                         MouseLeftButtonUp="Button_OnMouseLeftButtonUp"
+                                         >
+                                 
+                                </uc:MyButton>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

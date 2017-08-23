@@ -1,16 +1,10 @@
-using GalaSoft.MvvmLight;
+using PatternDesignaApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Navigation;
-using GalaSoft.MvvmLight.CommandWpf;
-using PatternDesignaApp.Model;
-
 
 namespace PatternDesignaApp.ViewModel
 {
@@ -19,9 +13,6 @@ namespace PatternDesignaApp.ViewModel
         public MainViewModel()
         {
         }
-
-        
-
 
         private ImageSource _currentImageSource;
 
@@ -35,9 +26,9 @@ namespace PatternDesignaApp.ViewModel
             }
         }
 
-        private ICollection<MyPixelModel> _points;
+        private List<MyPixelModel> _points;
 
-        public ICollection<MyPixelModel> Points
+        public List<MyPixelModel> Points
         {
             get { return _points; }
             set
@@ -58,6 +49,7 @@ namespace PatternDesignaApp.ViewModel
                 RaisePropertyChanged();
             }
         }
+
         private int _currentColumn;
 
         public int CurrentColumn
@@ -81,51 +73,6 @@ namespace PatternDesignaApp.ViewModel
                 RaisePropertyChanged();
             }
         }
-        /// <summary>
-        /// ªÊ÷∆ª≠≤º
-        /// </summary>
-        /// <param name="width"></param>
-        /// <param name="high"></param>
-        //private void InitCanvas(int row, int column)
-        //{
-        //    //DoCommand(() =>
-        //    //{
-        //        var p = new List<RectangleGeometry>();
-        //        var total = row * column;
-        //        for (int rowIndex = 0; rowIndex < row; rowIndex++)
-        //        {
-        //            for (int columnIndex = 0; columnIndex < column; columnIndex++)
-        //            {
-        //                var r = new RectangleGeometry
-        //                {
-        //                    //Margin = new Thickness(columnIndex*10, rowIndex*10,0,0),
-        //                    //X = rowIndex * 10,
-        //                    //Y = columnIndex * 10,
-        //                    //Height = 10,
-        //                    //Width = 10,
-        //                    Rect = new Rect
-        //                    {
-        //                        X = rowIndex * 20,
-        //                        Y = columnIndex * 20,
-        //                        Height = 20,
-        //                        Width = 20,
-        //                    }
-        //                };
-        //                var button=new Button
-        //                {
-        //                    Height = 20,
-        //                    Width = 20,
-        //                    Margin = new Thickness(columnIndex * 10, rowIndex * 10, 0, 0),
-        //                };
-        //                p.Add(r);
-        //            }
-        //        }
-        //        //EventManager.RegisterClassHandler(typeof(Rectangle), Mouse.MouseDownEvent,
-        //        //    new MouseButtonEventHandler(OnMouseDown), false);
-        //        Points = p;
-        //    //});
-        //}
-
 
         private void InitCanvas(int row, int column)
         {
@@ -133,61 +80,40 @@ namespace PatternDesignaApp.ViewModel
             //{
             var p = new List<MyPixelModel>();
             var total = row * column;
-            //for (int i = 0; i < total; i++)
-            //{
-            //    p.Add(i);
-            //}
+
             CurrentColumn = column;
             CurrentRow = row;
             var time = new Stopwatch();
             time.Start();
+            int index = 1;
             for (int rowIndex = 0; rowIndex < row; rowIndex++)
             {
                 for (int columnIndex = 0; columnIndex < column; columnIndex++)
                 {
-                    //var r = new RectangleGeometry
-                    //{
-                    //    //Margin = new Thickness(columnIndex*10, rowIndex*10,0,0),
-                    //    //X = rowIndex * 10,
-                    //    //Y = columnIndex * 10,
-                    //    //Height = 10,
-                    //    //Width = 10,
-                    //    Rect = new Rect
-                    //    {
-                    //        X = rowIndex * 20,
-                    //        Y = columnIndex * 20,
-                    //        Height = 20,
-                    //        Width = 20,
-                    //    }
-                    //};
                     var button = new MyPixelModel
                     {
+                        Row = rowIndex+1,
+                        Colunm = columnIndex+1,
+                        Index = index,
                         Height = 20,
                         Width = 20,
                         Margin = new Thickness(columnIndex * 20, rowIndex * 20, 0, 0),
-                        ClickCommand = new RelayCommand<MyPixelModel>(o =>
-                        {
-                            o.Background = FillColor;
-                        },o=>true)
                     };
-                    //Console.WriteLine(button.Margin);
+                    index++;
 
                     p.Add(button);
                 }
             }
-           
-            //EventManager.RegisterClassHandler(typeof(Rectangle), Mouse.MouseDownEvent,
-            //    new MouseButtonEventHandler(OnMouseDown), false);
+
             Points = p;
             time.Stop();
             Console.WriteLine(time.ElapsedMilliseconds);
             //});
         }
+
         private void OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("ok");
         }
-
-
     }
 }

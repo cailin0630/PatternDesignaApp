@@ -8,31 +8,21 @@ using PatternDesignaApp.Annotations;
 
 namespace PatternDesignaApp.Model
 {
-    public class MyPixelModel:INotifyPropertyChanged
+    public class MyPixelModel
     {
+        public int Index { get; set; }
+        public int Row { get; set; }
+        public int Colunm { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public Thickness Margin { get; set; }
-        public ICommand ClickCommand { get; set; }
+        //public ICommand ClickCommand { get; set; }
 
-        private Color _background;
 
-        public Color Background
-        {
-            get { return _background; }
-            set
-            {
-                _background = value;
-                OnPropertyChanged();
-            }
-        }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public Brush Background { get; set; } = Brushes.White;
 
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+
+
     }
 }
