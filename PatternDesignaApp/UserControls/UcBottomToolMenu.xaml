@@ -6,14 +6,24 @@
              xmlns:local="clr-namespace:PatternDesignaApp.UserControls"
              mc:Ignorable="d" 
              >
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#ffffff"></Setter>
+        </Style>
+    </UserControl.Resources>
     <Border BorderThickness="1"
             BorderBrush="Brown">
     <StackPanel Orientation="Horizontal"
                 HorizontalAlignment="Center">
-        <TextBlock Text="宽:"></TextBlock>
-            <TextBlock Text="{Binding CurrentImageSource.Width}"></TextBlock>
-        <TextBlock Text="高:"></TextBlock>
-            <TextBlock Text="{Binding CurrentImageSource.Height}"></TextBlock>
+        <TextBlock Text="宽:"
+                   ></TextBlock>
+            <TextBlock
+                Name="WidthTextBlock"
+                Text="{Binding CurrentImageSource.Width}"></TextBlock>
+        <TextBlock 
+           
+            Text="高:"></TextBlock>
+            <TextBlock  Name="HeightTextBlock" Text="{Binding CurrentImageSource.Height}"></TextBlock>
     </StackPanel>
     </Border>
 </UserControl>

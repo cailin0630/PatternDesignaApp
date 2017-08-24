@@ -14,10 +14,12 @@
     <Border BorderThickness="1" BorderBrush="Brown">
         <StackPanel>
             <Button Content="选择区域"></Button>
-            <Button Content="画笔"
+            <Button Content="直线"
                     Command="{Binding SelectHbCommand}"></Button>
-            <Button Content="多边形"
+            <Button Content="矩形"
                     Command="{Binding SelectDbxCommand}"></Button>
+            <Button Content="圆"
+                    Command="{Binding SelectYCommand}"></Button>
             <Button Content="填充"></Button>
             <Button Content="取色"></Button>
             <Button Content="编辑"></Button>

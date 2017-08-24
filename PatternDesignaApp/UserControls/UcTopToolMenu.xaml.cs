@@ -24,5 +24,10 @@ namespace PatternDesignaApp.UserControls
         {
             InitializeComponent();
         }
+        public Action GridShowOrHideAction { get; set; }
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            GridShowOrHideAction.Invoke();
+        }
     }
 }

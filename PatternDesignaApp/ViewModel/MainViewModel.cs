@@ -61,6 +61,17 @@ namespace PatternDesignaApp.ViewModel
                 RaisePropertyChanged();
             }
         }
+        private Color _borderColor;
+
+        public Color BorderColor
+        {
+            get { return _borderColor; }
+            set
+            {
+                _borderColor = value;
+                RaisePropertyChanged();
+            }
+        }
 
         private Color _fillColor;
 
@@ -74,40 +85,42 @@ namespace PatternDesignaApp.ViewModel
             }
         }
 
+       
         private void InitCanvas(int row, int column)
         {
             //DoCommand(() =>
             //{
-            var p = new List<MyPixelModel>();
-            var total = row * column;
+            //    var p = new List<MyPixelModel>();
+            //var total = row * column;
 
-            CurrentColumn = column;
-            CurrentRow = row;
-            var time = new Stopwatch();
-            time.Start();
-            int index = 1;
-            for (int rowIndex = 0; rowIndex < row; rowIndex++)
-            {
-                for (int columnIndex = 0; columnIndex < column; columnIndex++)
-                {
-                    var button = new MyPixelModel
-                    {
-                        Row = rowIndex+1,
-                        Colunm = columnIndex+1,
-                        Index = index,
-                        Height = 20,
-                        Width = 20,
-                        Margin = new Thickness(columnIndex * 20, rowIndex * 20, 0, 0),
-                    };
-                    index++;
+            //CurrentColumn = column;
+            //CurrentRow = row;
+            //var time = new Stopwatch();
+            //time.Start();
+            //int index = 1;
+            //for (int rowIndex = 0; rowIndex < row; rowIndex++)
+            //{
+            //    for (int columnIndex = 0; columnIndex < column; columnIndex++)
+            //    {
+            //        var button = new MyPixelModel
+            //        {
+            //            Row = rowIndex+1,
+            //            Colunm = columnIndex+1,
+            //            Index = index,
+            //            Height = 20,
+            //            Width = 20,
+            //            Margin = new Thickness(columnIndex * 20, rowIndex * 20, 0, 0),
+            //        };
+            //        index++;
 
-                    p.Add(button);
-                }
-            }
+            //        p.Add(button);
+            //    }
+            //}
 
-            Points = p;
-            time.Stop();
-            Console.WriteLine(time.ElapsedMilliseconds);
+            //Points = p;
+            //time.Stop();
+            //Console.WriteLine(time.ElapsedMilliseconds);
+            //    return true;
             //});
         }
 

@@ -90,6 +90,8 @@ namespace PatternDesignaApp.ViewModel
 
         #region DoUcMenuCommand
 
+        public Action<int, int> InitCanvasAction;
+
         protected virtual void DoNewFileCommand()
         {
             //todo DoNewFileCommand
@@ -99,6 +101,7 @@ namespace PatternDesignaApp.ViewModel
                 var high = result.Item2;
                 //todo 绘制 画布
                 InitCanvas(width, high);
+                InitCanvasAction.Invoke(width, high);
             });
         }
 

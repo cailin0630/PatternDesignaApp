@@ -36,9 +36,23 @@ namespace PatternDesignaApp.ViewModel
             {
                 _selectDbxCommand = _selectDbxCommand ?? new RelayCommand(() =>
                 {
-                    CurrentBrushType = BrushType.多边形;
+                    CurrentBrushType = BrushType.矩形;
                 }, () => true);
                 return _selectDbxCommand;
+            }
+        }
+
+        private ICommand _selectYCommand;
+
+        public ICommand SelectYCommand
+        {
+            get
+            {
+                _selectYCommand = _selectYCommand ?? new RelayCommand(() =>
+                {
+                    CurrentBrushType = BrushType.圆;
+                }, () => true);
+                return _selectYCommand;
             }
         }
     }

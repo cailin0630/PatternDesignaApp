@@ -8,6 +8,6 @@ namespace PatternDesignaApp.Enums
 {
     public enum BrushType
     {
-        no,画笔,多边形
+        no,画笔,圆,矩形
     }
 }

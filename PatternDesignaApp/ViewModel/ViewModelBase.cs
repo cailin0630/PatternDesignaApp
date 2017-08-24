@@ -18,15 +18,27 @@ namespace PatternDesignaApp.ViewModel
             }
         }
 
-        public void DoCommand(Action act, bool mutex = true)
+        public void DoCommand(Func<bool> action)
         {
-
-            DoCommand(() =>
+            ShowLoading = true;
+            Task.Run(() => action.Invoke())
+                .ContinueWith(ctx =>
             {
-                act();
-                return true;
-            }, mutex);
+                if(ctx.Result)
+                    ShowLoading = false;
+            });
+            
+            
         }
+        //public void DoCommand(Action act, bool mutex = true)
+        //{
+
+        //    DoCommand(() =>
+        //    {
+        //        act();
+        //        return true;
+        //    }, mutex);
+        //}
 
         //public Task<bool> DoCommand(Action act, bool mutex = true)
         //{
@@ -54,25 +66,25 @@ namespace PatternDesignaApp.ViewModel
         //    //}, mutex);
         //}
 
-        public Task<T> DoCommand<T>(Func<T> action, bool mutex = true)
-        {
-            var watch = Stopwatch.StartNew();
-            if (mutex && ShowLoading)
-                return new Task<T>(() => default(T));
-            ShowLoading = true;
-            return Task.Run(() =>
-            {
-                return action.Invoke();
-            }).ContinueWith(ctx =>
-            {
-                watch.Stop();
-                var total = watch.ElapsedMilliseconds;
-                Console.WriteLine(total);
-                ShowLoading = false;
-                if (ctx.IsFaulted)
-                    throw new Exception("异步操作中存在未处理异常");
-                return ctx.Result;
-            });
-        }
+        //public Task<T> DoCommand<T>(Func<T> action, bool mutex = true)
+        //{
+        //    var watch = Stopwatch.StartNew();
+        //    if (mutex && ShowLoading)
+        //        return new Task<T>(() => default(T));
+        //    ShowLoading = true;
+        //    return Task.Run(() =>
+        //    {
+        //        return action.Invoke();
+        //    }).ContinueWith(ctx =>
+        //    {
+        //        watch.Stop();
+        //        var total = watch.ElapsedMilliseconds;
+        //        Console.WriteLine(total);
+        //        ShowLoading = false;
+        //        if (ctx.IsFaulted)
+        //            throw new Exception("异步操作中存在未处理异常");
+        //        return ctx.Result;
+        //    });
+        //}
     }
 }

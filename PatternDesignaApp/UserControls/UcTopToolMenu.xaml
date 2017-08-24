@@ -14,7 +14,9 @@
     <Border BorderThickness="1"
             BorderBrush="Brown">
     <StackPanel Orientation="Horizontal">
-        <Button Content="网格显示"></Button>
+        <Button Name="GridButton"
+                Content="网格"
+                Click="ButtonBase_OnClick"></Button>
         <Button Content="快速创建特定花型"></Button>
         <Button Content="标尺显示"></Button>
         <Button Content="花型缩放"></Button>

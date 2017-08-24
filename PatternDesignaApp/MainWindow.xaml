@@ -57,7 +57,7 @@
             </Grid.RowDefinitions>
             <uc:UcMenu Grid.Row="0"
             ></uc:UcMenu>
-            <uc:UcTopToolMenu Grid.Row="1" ></uc:UcTopToolMenu>
+            <uc:UcTopToolMenu x:Name="UcTopToolMenu" Grid.Row="1" ></uc:UcTopToolMenu>
 
             <Grid  Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -66,38 +66,45 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <uc:UcLeftToolMenu Grid.Column="0" ></uc:UcLeftToolMenu>
-                <!--<Canvas Grid.Column="1"
-                        Name="Canvas" ></Canvas>-->
-                <ScrollViewer Grid.Column="1"
-                               >
-                    <ItemsControl ItemsSource="{Binding Points}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <Canvas Name="Canvas"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Visible" 
-                                  ScrollViewer.VerticalScrollBarVisibility="Visible">
-                                </Canvas>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <uc:MyButton  Name="MyButton"
-                                     Height="{Binding Height}"
-                                         Width="{Binding Width}"
-                                         Margin="{Binding Margin}"
-                                         Background="{Binding Background,Mode=TwoWay}"
+               
+                <Canvas Grid.Column="1" Name="MyCanvas"
+                        MouseLeftButtonDown="MyCanvas_OnMouseLeftButtonDown"
+                        MouseLeftButtonUp="MyCanvas_OnMouseLeftButtonUp"
+                        >
+                </Canvas>
+                <!--<Grid Grid.Column="1">
+                    <toolkit:BusyIndicator IsBusy="{Binding ShowLoading}"
+                                           Visibility="Visible"
+                                           BusyContent="正在执行..."></toolkit:BusyIndicator>
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding Points}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Name="Canvas"
+                                            ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                                            ScrollViewer.VerticalScrollBarVisibility="Visible">
+                                    </Canvas>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <uc:MyButton  Name="MyButton"
+                                                  Height="{Binding Height}"
+                                                  Width="{Binding Width}"
+                                                  Margin="{Binding Margin}"
+                                                  Background="{Binding Background,Mode=TwoWay}"
                                         
-                                         MouseEnter="Button_OnMouseEnter"
-                                         MouseLeftButtonDown="Button_OnMouseLeftButtonDown"
-                                         MouseLeftButtonUp="Button_OnMouseLeftButtonUp"
-                                         >
-                                 
-                                </uc:MyButton>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                                                  MouseEnter="Button_OnMouseEnter"
+                                                  MouseLeftButtonDown="Button_OnMouseLeftButtonDown"
+                                                  MouseLeftButtonUp="Button_OnMouseLeftButtonUp"
+                                    >
 
-                    <!--<ItemsControl  ItemsSource="{Binding Points}">
+                                    </uc:MyButton>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        --><!--<ItemsControl  ItemsSource="{Binding Points}">
                               
                         <ItemsControl.ItemTemplate>
                               <DataTemplate>
@@ -131,7 +138,8 @@
                                 <Setter Property="Canvas.Left" Value="{Binding Rect.X}"/>
                                 <Setter Property="Canvas.Top" Value="{Binding Rect.Y}"/>
                                 -->
-                    <!--<Setter Property="Canvas.Margin" Value="{Binding Margin}"></Setter>--><!--
+                        <!--<Setter Property="Canvas.Margin" Value="{Binding Margin}"></Setter>-->
+                        <!--
                             </Style>
                         </ItemsControl.ItemContainerStyle>
                         <ItemsControl.ItemTemplate>
@@ -146,35 +154,40 @@
                                            Click="Grid_OnClick"></Button>
                                 </Border>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>-->
-                    
-                </ScrollViewer>
+                        </ItemsControl.ItemTemplate>--><!--
+
+                    </ScrollViewer>
+                </Grid>-->
+                
                 <StackPanel Grid.Column="2">
-                    <TextBlock Text="外框颜色"/>
+                    <TextBlock Text="外框颜色" Foreground="#ffffff"/>
                     <toolkit:ColorPicker 
-                                     SelectedColor="{Binding BackColor}"
+                                     SelectedColor="{Binding BorderColor}"
                                       >
                     </toolkit:ColorPicker>
-                    <TextBlock Text="填充颜色"/>
+                    <TextBlock Text="填充颜色" Foreground="#ffffff"/>
                     <toolkit:ColorPicker 
                                      SelectedColor="{Binding FillColor}"
+                                     
                                       >
                     </toolkit:ColorPicker>
                 </StackPanel>
                
             </Grid>
-            <uc:UcBottomToolMenu Grid.Row="3"
+            <uc:UcBottomToolMenu
+                Grid.Row="3"
+                x:Name="UcBottomToolMenu"
             ></uc:UcBottomToolMenu>
         </Grid>
       
         <!-- 等待框 -->
-        <Grid Visibility="{Binding ShowLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <!--<Grid Visibility="{Binding ShowLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
           
             <Border Background="Black" Opacity="0.4" />
             <uc:LoadingWait></uc:LoadingWait>
                       
           
-        </Grid>
+        </Grid>-->
     </Grid>
    
 </Window>
