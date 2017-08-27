@@ -66,13 +66,9 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <uc:UcLeftToolMenu Grid.Column="0" ></uc:UcLeftToolMenu>
-               
-                <Canvas Grid.Column="1" Name="MyCanvas"
-                        MouseLeftButtonDown="MyCanvas_OnMouseLeftButtonDown"
-                        MouseLeftButtonUp="MyCanvas_OnMouseLeftButtonUp"
-                        >
-                </Canvas>
-                <!--<Grid Grid.Column="1">
+              
+                   
+                <Grid Grid.Column="1">
                     <toolkit:BusyIndicator IsBusy="{Binding ShowLoading}"
                                            Visibility="Visible"
                                            BusyContent="正在执行..."></toolkit:BusyIndicator>
@@ -88,76 +84,29 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <uc:MyButton  Name="MyButton"
+                                    <uc:MyButton  x:Name="MyButton"
                                                   Height="{Binding Height}"
                                                   Width="{Binding Width}"
                                                   Margin="{Binding Margin}"
-                                                  Background="{Binding Background,Mode=TwoWay}"
+                                                  Background="{Binding Background}"
                                         
-                                                  MouseEnter="Button_OnMouseEnter"
-                                                  MouseLeftButtonDown="Button_OnMouseLeftButtonDown"
-                                                  MouseLeftButtonUp="Button_OnMouseLeftButtonUp"
+                                                 
+                                                  MouseMove="MyButton_OnMouseMove"
+                                                  MouseLeftButtonDown="MyButton_OnMouseLeftButtonDown"
+                                                  MouseLeftButtonUp="MyButton_OnMouseLeftButtonUp"
                                     >
 
                                     </uc:MyButton>
+                                  
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
 
-                        --><!--<ItemsControl  ItemsSource="{Binding Points}">
-                              
-                        <ItemsControl.ItemTemplate>
-                              <DataTemplate>
-                                          
-                                <Button Content="{Binding Content}"/>
-                                            
-                            </DataTemplate>
-                                  
-                        </ItemsControl.ItemTemplate>
-                              
                      
-                              
-                        <ItemsControl.ItemsPanel>
-                                    
-                            <ItemsPanelTemplate>
-                                          
-                                <StackPanel></StackPanel>
-                                        
-                            </ItemsPanelTemplate>
-                                  
-                        </ItemsControl.ItemsPanel>
-                            
-                    </ItemsControl>
-                    <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <Button />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemContainerStyle>
-                            <Style>
-                                <Setter Property="Canvas.Left" Value="{Binding Rect.X}"/>
-                                <Setter Property="Canvas.Top" Value="{Binding Rect.Y}"/>
-                                -->
-                        <!--<Setter Property="Canvas.Margin" Value="{Binding Margin}"></Setter>-->
-                        <!--
-                            </Style>
-                        </ItemsControl.ItemContainerStyle>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderBrush="#686868"
-                                        BorderThickness="0.5" 
-                                        Opacity="0.5"
-                                        Width="{Binding Rect.Width}"
-                                        Height="{Binding Rect.Width}"
-                                >
-                                   <Button Name="Grid"
-                                           Click="Grid_OnClick"></Button>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>--><!--
+                    
 
                     </ScrollViewer>
-                </Grid>-->
+                </Grid>
                 
                 <StackPanel Grid.Column="2">
                     <TextBlock Text="外框颜色" Foreground="#ffffff"/>

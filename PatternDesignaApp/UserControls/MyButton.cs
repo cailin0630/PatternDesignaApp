@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,5 +21,13 @@ namespace PatternDesignaApp.UserControls
             base.OnMouseLeftButtonUp(e);
             e.Handled = false;
         }
+    }
+
+    public class MyPoint : ContentControl, ICommandSource
+    {
+        
+        public ICommand Command { get; }
+        public object CommandParameter { get; }
+        public IInputElement CommandTarget { get; }
     }
 }

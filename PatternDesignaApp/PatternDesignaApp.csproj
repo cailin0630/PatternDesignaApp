@@ -102,6 +102,7 @@
     <Compile Include="Extension\FrameworkConst.cs" />
     <Compile Include="Extension\ImageExtension.cs" />
     <Compile Include="Extension\StringExtension.cs" />
+    <Compile Include="Model\MyRectangle.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="UserControls\LoadingWait.xaml.cs">
       <DependentUpon>LoadingWait.xaml</DependentUpon>

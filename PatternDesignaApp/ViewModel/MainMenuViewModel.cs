@@ -3,11 +3,14 @@ using Microsoft.Win32;
 using PatternDesignaApp.Enums;
 using PatternDesignaApp.Extension;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using PatternDesignaApp.DailogWindows;
+using PatternDesignaApp.Model;
 
 namespace PatternDesignaApp.ViewModel
 {
@@ -99,10 +102,40 @@ namespace PatternDesignaApp.ViewModel
             {
                 var width = result.Item1;
                 var high = result.Item2;
-                //todo 绘制 画布
-                InitCanvas(width, high);
-                InitCanvasAction.Invoke(width, high);
+                InitCanvas(width,high);
             });
+        }
+
+        public void InitCanvas(int row, int column)
+        {
+            var p = new List<MyPixel>();
+
+            var time = new Stopwatch();
+            time.Start();
+            int index = 1;
+            for (int rowIndex = 0; rowIndex < row; rowIndex++)
+            {
+                for (int columnIndex = 0; columnIndex < column; columnIndex++)
+                {
+                    var button = new MyPixel()
+                    {
+                        Row = rowIndex + 1,
+                        Colunm = columnIndex + 1,
+                        Index = index,
+                        Height = 20,
+                        Width = 20,
+                        Margin = new Thickness(columnIndex * 20, rowIndex * 20, 0, 0),
+                    };
+                
+                    index++;
+
+                    p.Add(button);
+                    
+                }
+            }
+            Points = p;
+            time.Stop();
+            Console.WriteLine(time.ElapsedMilliseconds);
         }
 
         protected virtual void DoOpenFileCommand()

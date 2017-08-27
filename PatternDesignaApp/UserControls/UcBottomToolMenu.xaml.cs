@@ -25,10 +25,6 @@ namespace PatternDesignaApp.UserControls
             InitializeComponent();
         }
 
-        public void SetWidthAndHight(int w,int h)
-        {
-            WidthTextBlock.Text = w.ToString();
-            HeightTextBlock.Text = h.ToString();
-        }
+       
     }
 }
